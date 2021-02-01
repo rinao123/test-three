@@ -34,6 +34,8 @@ export default class Renderer {
                 this.camera = new THREE.OrthographicCamera(-s * k, s * k, s, -s, 1, 1000);
                 this.camera.position.set(200, 300, 200); //设置相机位置
                 this.camera.lookAt(this.scene.position); //设置相机方向(指向的场景对象)
+                this.camera.zoom = 50;
+                this.camera.updateProjectionMatrix();
                 this.renderer.setSize(dom.clientWidth, dom.clientHeight); //设置渲染区域尺寸
                 this.renderer.setClearColor(0xb9d3ff, 1); //设置背景颜色
                 dom.appendChild(this.renderer.domElement); //body元素中插入canvas对象
@@ -41,12 +43,12 @@ export default class Renderer {
                 const controls = new OrbitControls(this.camera, this.renderer.domElement);
                 controls.minPolarAngle = -Math.PI * (0 / 180);
                 controls.maxPolarAngle = Math.PI * (90 / 180);
-                controls.addEventListener('change', this.render);
+                controls.addEventListener("change", this.render);
 
                 this.render();
             }
         } catch (error) {
-            console.warn(error);
+            return Promise.reject(error);
         }
     }
 
