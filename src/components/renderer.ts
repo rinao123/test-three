@@ -59,7 +59,8 @@ export default class Renderer {
     loadModel = async () => {
         const loader = new GLTFLoader();
         try {
-            this.park = await loader.loadAsync("/static/pittsburg.gltf");
+            const path = process.env.NODE_ENV !== "github" ? "/static/pittsburg.gltf" : process.env.VUE_APP_PATH + "/static/pittsburg.gltf";
+            this.park = await loader.loadAsync(path);
             if (this.park) {
                 this.scene.add(this.park.scene);
             }
