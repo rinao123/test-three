@@ -34,7 +34,7 @@ export default class Renderer {
                 this.camera = new THREE.OrthographicCamera(-s * k, s * k, s, -s, 1, 1000);
                 this.camera.position.set(200, 300, 200); //设置相机位置
                 this.camera.lookAt(this.scene.position); //设置相机方向(指向的场景对象)
-                this.camera.zoom = 40;
+                this.camera.zoom = 20;
                 this.camera.updateProjectionMatrix();
                 this.renderer.setSize(dom.clientWidth, dom.clientHeight); //设置渲染区域尺寸
                 this.renderer.setClearColor(0xb9d3ff, 1); //设置背景颜色
@@ -59,15 +59,10 @@ export default class Renderer {
     loadModel = async () => {
         const loader = new GLTFLoader();
         try {
-            const path = process.env.NODE_ENV !== "github" ? "/static/pittsburg.gltf" : process.env.VUE_APP_PATH + "/static/pittsburg.gltf";
+            const path = process.env.NODE_ENV !== "github" ? "/static/city.gltf" : process.env.VUE_APP_PATH + "/static/pittsburg.gltf";
             this.park = await loader.loadAsync(path);
             if (this.park) {
                 this.scene.add(this.park.scene);
-                this.park.scene.translateX(10);
-                this.park.scene.translateY(20);
-                this.park.scene.translateZ(0);
-                this.park.scene.rotateX(-0.1);
-                this.park.scene.rotateZ(0.1);
             }
         } catch (error) {
             return Promise.reject(error);

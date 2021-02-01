@@ -7,7 +7,7 @@ import { Options, Vue } from "vue-class-component";
 import Renderer from "./renderer";
 
 @Options({})
-export default class HelloWorld extends Vue {
+export default class Park3d extends Vue {
   renderer: Renderer;
 
   constructor(props: unknown) {
