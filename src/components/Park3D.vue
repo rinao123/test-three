@@ -28,7 +28,7 @@ export default class Park3d extends Vue {
     this.init();
   }
 
-  init = async () => {
+  init = async (): Promise<void> => {
     try {
       await this.renderer.init();
     } catch (error) {

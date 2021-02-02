@@ -17,7 +17,7 @@ export default class Renderer {
         this.rotate = true;
     }
 
-    init = async () => {
+    init = async (): Promise<void> => {
         const dom = document.getElementById("park3d");
         if (!dom) {
             return Promise.reject("找不到dom节点");
@@ -36,7 +36,7 @@ export default class Renderer {
         }
     }
 
-    loadModel = async () => {
+    loadModel = async (): Promise<void> => {
         const loader = new GLTFLoader();
         try {
             this.park = await loader.loadAsync(getStaticRes("/static/models/city.gltf"));
@@ -46,7 +46,7 @@ export default class Renderer {
         }
     }
 
-    initLight = () => {
+    initLight = (): void => {
         //点光源
         const point = new PointLight(0xffffff);
         point.position.set(400, 200, 300); //点光源位置
@@ -56,14 +56,14 @@ export default class Renderer {
         this.scene.add(ambient);
     }
 
-    initCamera = (width: number, height: number) => {
+    initCamera = (width: number, height: number): void => {
         this.camera.position.set(200, 300, 200);
         this.camera.lookAt(this.scene.position);
         this.camera.zoom = 20;
         this.resizeCamera(width, height);
     }
 
-    initController = () => {
+    initController = (): void => {
         const controls = new OrbitControls(this.camera, this.renderer.domElement);
         controls.mouseButtons = {
             LEFT: MOUSE.PAN,
@@ -76,12 +76,12 @@ export default class Renderer {
         controls.addEventListener("start", this.onMouseDown);
     }
 
-    initRenderer = (width: number, height: number) => {
+    initRenderer = (width: number, height: number): void => {
         this.renderer.setSize(width, height);
         this.renderer.setClearColor(0xb9d3ff, 1);
     }
 
-    resizeCamera = (width: number, height: number) => {
+    resizeCamera = (width: number, height: number): void => {
         this.renderer.setSize(width, height);
         const k = width / height;
         const s = 200;
@@ -92,7 +92,7 @@ export default class Renderer {
         this.camera.updateProjectionMatrix();
     }
 
-    render = () => {
+    render = (): void => {
         if (this.rotate) {
             this.park?.scene.rotateY(0.0002);
         }
@@ -100,7 +100,7 @@ export default class Renderer {
         requestAnimationFrame(this.render);
     }
 
-    onResize = () => {
+    onResize = (): void => {
         const dom = document.getElementById("park3d");
         if (!dom) {
             return;
@@ -109,7 +109,7 @@ export default class Renderer {
         this.renderer.setSize(dom.clientWidth, dom.clientHeight);
     }
 
-    onMouseDown = (event: MouseEvent) => {
+    onMouseDown = (event: MouseEvent): void => {
         this.rotate = false;
     }
 }
