@@ -1,7 +1,9 @@
 import { Scene, OrthographicCamera, WebGLRenderer, PointLight, AmbientLight, MOUSE } from "three";
 import { GLTF, GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import * as Cesium from "cesium";
 import { getStaticRes } from "../utils/commonUtil";
+import "cesium/Build/Cesium/Widgets/widgets.css";
 
 export default class Renderer {
     scene: Scene;
@@ -109,7 +111,31 @@ export default class Renderer {
         this.renderer.setSize(dom.clientWidth, dom.clientHeight);
     }
 
-    onMouseDown = (event: MouseEvent): void => {
+    onMouseDown = (): void => {
         this.rotate = false;
+    }
+
+    initCesium = (): void => {
+        Object.assign(window, { CESIUM_BASE_URL: "/static/cesium/" });
+        Cesium.Ion.defaultAccessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlYTIzMzUyOS1hNTFiLTQzMzQtYmUwYS02OTRlNTFhNzI0MWUiLCJpZCI6NDMyODMsImlhdCI6MTYxMjQwNDEzOX0.c_qcuv76y5cAnA9Hag2Iqpk1KbbrkwpgUUwPa6NsKqQ";
+        // Initialize the Cesium Viewer in the HTML element with the "cesiumContainer" ID.
+        const viewer = new Cesium.Viewer("park3d", {
+            terrainProvider: Cesium.createWorldTerrain()
+        });
+        const tileset = new Cesium.Cesium3DTileset({
+            url: "/static/tiles/tileset.json"
+        });
+        //添加到球体上
+        viewer.scene.primitives.add(tileset);
+        //定位过去
+        viewer.zoomTo(tileset);
+        // Fly the camera to San Francisco at the given longitude, latitude, and height.
+        // viewer.camera.flyTo({
+        //     destination: Cesium.Cartesian3.fromDegrees(-122.4175, 37.655, 400),
+        //     orientation: {
+        //         heading: Cesium.Math.toRadians(0.0),
+        //         pitch: Cesium.Math.toRadians(-15.0),
+        //     }
+        // });
     }
 }

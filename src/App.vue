@@ -5,6 +5,7 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import Park3D from "./components/Park3D.vue";
+import "./utils/fixGltf";
 
 @Options({
   components: {

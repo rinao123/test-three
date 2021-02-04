@@ -5,10 +5,11 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-	"github": "vue-cli-service build --mode github",
+    "github": "vue-cli-service build --mode github",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "cesium": "^1.78.0",
     "core-js": "^3.6.5",
     "three": "^0.125.2",
     "vue": "^3.0.0",
