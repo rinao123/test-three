@@ -120,7 +120,7 @@ export default class Renderer {
         Cesium.Ion.defaultAccessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlYTIzMzUyOS1hNTFiLTQzMzQtYmUwYS02OTRlNTFhNzI0MWUiLCJpZCI6NDMyODMsImlhdCI6MTYxMjQwNDEzOX0.c_qcuv76y5cAnA9Hag2Iqpk1KbbrkwpgUUwPa6NsKqQ";
         // Initialize the Cesium Viewer in the HTML element with the "cesiumContainer" ID.
         const viewer = new Cesium.Viewer("park3d", {
-            terrainProvider: Cesium.createWorldTerrain(),
+            // terrainProvider: Cesium.createWorldTerrain(),
             animation: false,
             baseLayerPicker: false,
             vrButton: false,
