@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"3d-tiles-renderer@^0.2.6":
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/3d-tiles-renderer/-/3d-tiles-renderer-0.2.6.tgz#d7584a47bf157479eed9af9e608a83c514f11fe2"
+  integrity sha512-tf8vo/+jcwEWDBjqhXTb9HlGJUqKXd0JmhKk3IfVGY2dimiucDaRS+Fm9sQ0Wn/RgTFiu8iAlxA6jwd9Bs8vBg==
+
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.10.4", "@babel/code-frame@^7.12.11", "@babel/code-frame@^7.8.3":
   version "7.12.11"
   resolved "https://registry.npm.taobao.org/@babel/code-frame/download/@babel/code-frame-7.12.11.tgz?cache=0&sync_timestamp=1608076996164&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40babel%2Fcode-frame%2Fdownload%2F%40babel%2Fcode-frame-7.12.11.tgz#f4ad435aa263db935b8f10f2c552d23fb716a63f"
