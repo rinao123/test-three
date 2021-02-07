@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "3d-tiles-renderer": "^0.2.6",
-    "cesium": "^1.78.0",
     "core-js": "^3.6.5",
     "three": "^0.125.2",
     "vue": "^3.0.0",

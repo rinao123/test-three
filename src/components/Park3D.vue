@@ -25,7 +25,7 @@ export default class Park3d extends Vue {
   }
 
   mounted() {
-    this.initCesium();
+    this.init();
   }
 
   init = async (): Promise<void> => {
@@ -41,11 +41,6 @@ export default class Park3d extends Vue {
     } finally {
       this.loading = false;
     }
-  }
-
-  initCesium = (): void => {
-    this.loading = false;
-    this.renderer.initCesium();
   }
 }
 </script>
